@@ -1,0 +1,49 @@
+<header>
+    <nav aria-label="Aiuto alla navigazione">
+        <a class="aiutoNavigazione" href="#contenuto">Vai al contenuto</a>
+    </nav>
+    <!--logo con titolo-->
+    <div id="logo">
+        {homeLogo} <!--Da sostituire con link a index.php-->
+        <h1>Sandra Bertocco</h1>
+    </div>
+    <!--menù-->
+    <nav aria-label="Menù Principale" class="navbar">
+    <ul class="mainNav">
+        <li class="{homeCliccato}">{homePath}</li>
+        <li class="{opereCliccato}">{operePath}</li>
+        <li class="{galleriaCliccato}">{galleriaPath}</li>
+        <li class="{biografiaCliccato}">{biografiaPath}</li>
+        <li class="{contattiCliccato}">{contattiPath}</li>
+    </ul>
+    </nav>
+    <nav aria-label="Aiuto alla navigazione"><!--Salta la rilettura del menù-->
+        <a class="aiutoNavigazione" href="#contenuto">Vai al contenuto</a>
+    </nav>
+    <nav aria-label="Menù ad hamburger" class="mobileNav">
+        <ul class="sidebar">
+            <li onclick="hideSideBar()"><a id="nascondi" href="#"><img src="../assets/close.png"></a></li>
+            <li class="{homeCliccato}">{homePath}</li>
+            <li class="{opereCliccato}">{operePath}</li>
+            <li class="{galleriaCliccato}">{galleriaPath}</li>
+            <li class="{biografiaCliccato}">{biografiaPath}</li><!--con esposizioni alla fine-->
+            <li class="{contattiCliccato}">{contattiPath}</li>
+            {accedi}
+            {registrati}
+            {dashboard}
+            {logout}
+        </ul>
+    </nav>
+    <div class="accesso">
+        {accedi}
+        {registrati}
+        {dashboard}
+        {logout}
+        <a id="mostra" onclick="showSideBar()" tabindex="-1"><img src="../assets/ham.png" alt="menu ad hamburger"></a>
+    </div>
+    <div class="topnav">
+        <nav id="breadcrump" aria-label="Percorso">
+            <p>{breadcrump}</span></p>
+        </nav>
+    </div> 
+</header>

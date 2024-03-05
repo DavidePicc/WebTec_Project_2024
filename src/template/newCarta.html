@@ -1,0 +1,41 @@
+<form class="newCarta" method="post" action="newCarta.php" enctype="multipart/form-data">
+	<fieldset>
+		<legend>Dati generali</legend>
+	
+		<label for="titolo">Titolo </label>
+		<span><input type="text" name="titolo" id="titolo"  value="{titolo}" ></span> <br>
+
+		<label for="anno">Anno: </label> 
+		<span><input type="number" name="anno" id="anno" value="{anno}" required></span> <br>
+
+		<label for="tecnica">Tecnica: </label> 
+		<span><input type="text" name="tecnica" id="tecnica" value="{tecnica}" required/></span> <br>
+
+	</fieldset>
+	
+	<fieldset>
+		<legend>Descrizione</legend>
+	
+		<label for="descrizione">Descrizione opera: </label>
+		<span><textarea type="text" name="descrizione" id="descrizione"  value="{descrizione}" maxlength="256"></textarea></span>
+	</fieldset>
+
+	<fieldset>
+		<legend>Aggiungi immagine</legend>
+	
+		<label for="path">Nome file dell'opera(copia incolla del nome del file senza .jpg, si accettano solo file.jpg): </label>
+		<span><input type="text" name="path" id="path"  value="{path}"></span>
+
+		<label for="file">Scegli un file:</label>
+        <input type="file" name="file" id="file" accept="image/*" required>
+
+	</fieldset>
+
+	<fieldset>
+		<input type="submit" id="submit" name="submit" class="" value="INVIO" >
+		<input type="reset" id="reset" class="" value="CANCELLA" >
+	</fieldset>
+	
+	<div>{messaggio}</div>
+
+</form>

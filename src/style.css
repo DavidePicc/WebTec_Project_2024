@@ -1,0 +1,1183 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --headerBgColor: rgb(13,13,13, 0.96); /*valutare il 26,26,30*/
+    --headerTxtColor: rgb(255,255,255);
+    --blockquoteBGColor: rgba(13,13,13, 0.2);
+    --bgColor: rgb(33, 33, 33);
+    --bgArticle: rgba(0,0,0,0.6);
+    --txtColor: rgb(255,255,255);
+    --ButtonBgColor: rgb(255,255,255);
+    --footerBgColor: rgb(13, 13, 13);
+    --footerTxtColor: rgb(255,255,255);
+    --visitedLinkColor: rgb(255, 153, 0); /*da modificare ma meglio oro di violaceo*/
+    --focusformcolor: rgb(191, 191, 191);
+    --formnotwrite: rgb(51,51,51);
+    --linkColor: rgb(255,255,255);
+    --font-body-family: arial;
+    --BgSidebar: hsl(0 0% 150% / 0.1);
+    --logo-font: "Edwardian Script ITC", "Z003", "Apple Chancery"; /*windows, linux, mac, ne manca uno generico, la scelta del font è puramente una questione stilistica...*/
+}
+
+html{
+    font-size: 100%;
+    line-height: 1.5em;
+    margin: auto;
+}
+
+body{
+    /*background-image: url(assets/opere/10/interferenze.jpg);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100vh;
+    margin: auto;
+    /* margin-top: 1em; ho commentato questa riga altrimenti il corpo degli articoli si vede in alto*/
+    background-color: var(--bgColor);
+    color:var(--txtColor);
+    font-family: var(--font-body-family);
+}
+
+/*HEADER*/
+
+header{
+    /*position: fixed; /*permette di mantenere l'header sempre in alto tuttavia mi ha dato problemi*/
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around; /*modifica la disposizione del menu manegiarre con cura*/
+    background-color: var(--headerBgColor);
+    color: var(--headerTxtColor);
+    transition: all .50s ease;
+    margin-bottom: auto;
+}
+
+.aiutoNavigazione{
+    position: absolute;
+    text-indent: -999em;
+    display: none;
+}
+
+a{
+    color: var(--visitedLinkColor);
+    transition: all 0.2s ease;
+}
+a:visited{
+    color:var(--visitedLinkColor)
+}
+a:hover{
+    opacity:0.3;
+}
+
+a.tornasu{
+    padding-bottom: 1em;
+    transition: all 0.2s ease;
+}
+
+a.tornasu:hover{
+    opacity: 0.3;
+}
+
+#logo{
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+#logo img{
+    display: flex;
+    filter: invert(100%);
+    width: 4em;
+    height: auto;
+    margin-top: 0.5em;
+    transition: opacity 0.3s ease;
+}
+
+#logo img:hover{
+    opacity: 0.3;
+}
+
+#logo h1{
+    font-size: 3em;
+    line-height: 1.5em;
+    font-family: var(--logo-font);
+}
+
+.mainNav{
+    display: flex;
+    list-style: none;
+}
+
+.mainNav a{
+    color: var(--linkColor);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: auto;
+    padding: 0.5em;
+    transition: all .50s ease;
+}
+
+.mainNav .cliccato{
+    color:var(--visitedLinkColor);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    transition: all .50s ease;
+}
+
+div.accesso .cliccato{
+    color:var(--visitedLinkColor);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    transition: all .50s ease;
+}
+
+.mainNav a:hover{
+    color: var(--visitedLinkColor);
+}
+
+.accesso{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+
+.accesso .cliccato a{
+    color: var(--visitedLinkColor);
+    font-size: 1.1em;
+}
+
+.accesso a{
+    margin-right: 1.5em;
+    margin-left: 1em;
+    font-size: 1.1rem;
+    color: var(--linkColor);
+    font-weight: 500;
+    transition: all .50s ease;
+}
+
+.accesso a:hover{
+    color: var(--visitedLinkColor);
+}
+
+
+#mostra{
+    display: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.accesso #mostra img{
+    filter: invert(100%);
+    transition: opacity 0.3s ease;
+}
+
+.accesso #mostra img:hover {
+    opacity: 0.2%;
+}
+
+#nascondi{
+    filter:invert(100%);
+}
+/*sidebar*/
+.sidebar{
+    position:fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 999;
+    background: var(--BgSidebar);
+    backdrop-filter: blur(1em); /*effetto blur su firefox ed edge*/
+    -webkit-backdrop-filter: blur(1rem); /*effetto blur su safari altrimenti non funziona*/
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.5);
+    display: none;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+}
+  
+.sidebar li {
+    width: 100%;
+    list-style: none;
+}
+  
+.sidebar a {
+    width: 100%;
+    font-size: 1.5em;
+    display: inline-block;
+    color: var(--linkColor);
+    
+}
+
+.sidebar a:hover{
+    color:var(--visitedLinkColor);
+}
+
+
+.sidebar .cliccato{
+    color: var(--visitedLinkColor);
+    width: 100%;
+    font-size: 1.5em;
+    display: inline-block;
+}
+/*fine sidebar*/
+
+/*FUORI HEADER*/
+main a{
+    color: var(--linkColor);
+    transition:all 0.2s ease;
+}
+
+main a:visited{
+    color:var(--visitedLinkColor)
+}
+
+
+
+main a:hover{
+    opacity: 0.3;
+}
+/*BREADCRUMP*/
+
+.topnav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.topnav #breadcrump p > a{
+    color:var(--linkColor);
+}
+
+.topnav #breadcrump p > a:hover{
+    color: var(--visitedLinkColor);
+}
+
+/*FINE BREACRUMP*/
+
+/*MAIN*/
+main{
+    color: var(--txtColor);
+    width: 80%;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    margin: auto;
+    margin-top: auto;
+}
+
+main p{
+    padding-bottom: 1em;
+    padding-top: 0.5em;
+}
+
+/*FINE MAIN*/
+
+/*slider*/
+#slider {
+    margin: 0 auto;
+    width: 800px; /*modifica la larghezza delle slide, ricorda che poi vanno aggiunti tot pixel*/
+    max-width: 100%;
+    text-align: center;
+ }
+ #slider input[type=radio] {
+    display: none;
+ }
+ #slider label {
+    cursor:pointer;
+    text-decoration: none;
+    transition: opacity 0.4s;
+ }
+ #slider label:hover{
+    opacity: 0.5;
+ }
+ #slides {
+    padding: 10px;
+    border: 3px solid var(--txtColor);
+    background: var(--txtColor);
+    position: relative;
+    z-index: 1;
+ }
+ #overflow {
+    width: 100%;
+    overflow: hidden;
+ }
+ #slide1:checked ~ #slides .inner {
+    margin-left: 0;
+ }
+ #slide2:checked ~ #slides .inner {
+    margin-left: -100%;
+ }
+ #slide3:checked ~ #slides .inner {
+    margin-left: -200%;
+ }
+ #slide4:checked ~ #slides .inner {
+    margin-left: -300%;
+ }
+ #slides .inner {
+    transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    width: 400%;
+    line-height: 0;
+    height: 400px;/*modifica l'altezza delle slide*/
+ }
+ #slides .slide {
+    width: 25%;
+    float:left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--ButtonBgColor);
+ }
+ #slides .slide_1 {
+    background-image: url(../src/assets/opere/giovane_eroe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+ }
+ #slides .slide_2 {
+    background-image: url(../src/assets/opere/sottobosco.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+ }
+ #slides .slide_3 {
+    background-image: url(../src/assets/opere/mare_arido.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+ }
+ #slides .slide_4 {
+    background-image: url(../src/assets/opere/pioggia_e_fango.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+ }
+
+ #bullets {
+    margin: 1em 0 1em;
+    text-align: center;
+ }
+ #bullets label {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius:100%;
+    background: var(--ButtonBgColor);
+    margin: 0 10px;
+ }
+ #slide1:checked ~ #bullets label:nth-child(1),
+ #slide2:checked ~ #bullets label:nth-child(2),
+ #slide3:checked ~ #bullets label:nth-child(3),
+ #slide4:checked ~ #bullets label:nth-child(4) {
+    background: var(--headerBgColor);
+ }
+
+/*fine slider*/
+
+/*FOOTER*/
+footer{
+    background-color: var(--footerBgColor);
+    color: var(--footerTxtColor);
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+    padding: 1em 0em 1em 0em;
+}
+
+/*OPERE.html*/
+
+.containerOpere {
+    display: flex;
+    height: 65vh;
+    width: 100%;
+}
+  
+/* Stile per la colonna sinistra e destra */
+.left-column,
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5em;
+    position: relative;
+    text-align: center;
+}
+/*
+.left-column p, .right-column p{
+    margin:auto;
+    position: relative;
+    font-size: 1.5em;
+    opacity: 1;
+}*/
+
+/* Immagine di sfondo */
+.left-column::before,
+.right-column::before {
+    content: ""; /* Contenuto generato per rendere ::before selezionabile */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Posiziona l'immagine di sfondo dietro il contenuto della colonna */
+    cursor: pointer;
+    transition: opacity 0.6s ease;
+    opacity: 0.3;
+}
+
+/* Immagine di sfondo per la colonna sinistra */
+.left-column::before {
+    background-image: url(../src/assets/opere/valico.jpg);
+}
+
+/* Immagine di sfondo per la colonna destra */
+.right-column::before {
+    background-image: url(../src/assets/opere/14.jpg);
+}
+
+.left-column:hover::before,
+.right-column:hover::before {
+    opacity: 1;
+}
+
+a.btnOpere{
+    margin: auto;
+    padding:20%;
+    line-height: 1.5em; /*evita la sovrapposizione del testo*/
+    background-color: var(--BgButton);
+    background-size: cover;
+    backdrop-filter: blur(1em); /*effetto blur su firefox ed edge*/
+    -webkit-backdrop-filter: blur(1rem); /*effetto blur su safari altrimenti non funziona*/
+    color: var(--linkColor);
+    font-size: 2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 1em;
+    -webkit-appearance: button; /*per safari*/
+    -moz-appearance: button; /*per firefox e altri browser*/
+    appearance: button;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+a.btnOpere:visited{
+    color:var(--linkColor)
+}
+
+a.btnOpere:hover{
+    color: var(--visitedLinkColor);
+    opacity: 1;
+}
+
+/*************/
+
+
+/*Per il file operaSingola*/
+.containerOperaSingola {
+    display: flex;
+    align-items: center;
+    max-height: 100%;
+    max-width: 100%;
+}
+  
+.containerOperaSingola .left {
+    flex: 1;
+    margin: 5%;
+}
+  
+.containerOperaSingola .right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    background-color: var(--BgSidebar);
+    padding: 1.5em;
+}
+  
+.containerOperaSingola .left img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+  
+.containerOperaSingola #titolo-opera {
+    font-size: 30px;
+    font-family: "Georgia", sans-serif; 
+    padding-bottom: 5%;
+}
+  
+
+.grassetto{
+    font-weight: bold;
+} 
+
+#titolo-Opera{
+    font-size: 3em;
+}
+
+#bottonePrenotazione{
+    background-color: var(--ButtonBgColor);
+    border: none;
+    color: var(--footerBgColor);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+/*Fine CSS container per opera singola*/  
+
+/*CSS contatti*/
+.contatti{
+    background-color: var(--headerBgColor);
+    padding: 1.5em;
+    text-align: center;
+    font-size: 1.1rem;
+    border: 5px solid var(--ButtonBgColor);
+}
+
+.contatti > h3.titolo{
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+
+form#contactForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+label[for="firstName"],label[for="lastName"],label[for="phone"],label[for="message"]{
+    font-weight: bold;
+    font-size:1.15rem;
+}
+
+input[name="firstName"]:hover,input[name="lastName"]:hover,input[name="phone"]:hover, textarea[name="message"]:hover{
+    background-color: var(--focusformcolor);
+}
+
+input[name="firstName"]:focus,input[name="lastName"]:focus,input[name="phone"]:focus, textarea[name="message"]:focus{
+    background-color: var(--focusformcolor);
+}
+
+button[type="submit"]{
+    background-color: var(--ButtonBgColor);
+    border: none;
+    padding: 2.5%;
+    color: var(--footerBgColor);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+button[type="submit"]:focus{
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px var(--visitedLinkColor);
+    transition: 0.2s
+}
+
+button[type="submit"]:hover{
+    opacity: 0.4;
+}
+
+/*CSS per biografia*/
+div.biografia{
+    padding-top: 1.5em;
+    text-align: center;
+}
+
+div.biografia h2{
+    font-weight: bold;
+    font-size: 2em;
+}
+
+div.esposizioni h2{
+    font-weight: bold;
+    font-size: 2em;
+}
+
+div.biografia p{
+    text-align: center;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+div.esposizioni{
+    text-align:center;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+div.esposizioni ol li{
+    list-style: none;
+}
+
+img.img-bio{
+    width: 311px;
+    height: 304px;
+    max-width:100%;
+    max-height: 100%;
+}
+
+p.data{
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/** CSS PER GALLERIA */
+h3.titolo{
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+/*al momento non ho idee lol*/
+
+/** CSS PER LOGIN*/
+div.box{
+    background-color: var(--headerBgColor);
+    color: var(--txtColor);
+    text-align: center;
+    padding: 2em;
+    border: 5px solid var(--ButtonBgColor);
+}
+
+form[method="post"]{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap:1rem;   
+}
+
+label[for="username"], label[for="password"]{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+form[method="post"] > p.logintitle{
+    font-size: 3em;
+    font-weight: bold;
+    padding-bottom: 2rem;
+}
+
+form[method="post"] > p{
+    font-size: 1.15rem;
+}
+
+input.casellaTesto{
+    margin: auto;
+    cursor: text;
+    border: none;
+    box-sizing: border-box;
+    background-color: var(--linkColor);
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+input.casellaTesto:hover{
+    background-color: var(--focusformcolor);
+}
+
+input.casellaTesto:focus{
+    background-color: var(--focusformcolor);
+}
+
+input[value="Login"], input[value="Signup"]{
+    background-color: var(--ButtonBgColor);
+    border: none;
+    color: var(--footerBgColor);
+    margin:0.5em;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.5em;
+}
+
+input[value="Login"]:hover{
+    opacity: 0.5;
+}
+
+input[value="Signup"]:hover{
+    opacity: 0.5;
+}
+
+.Errore{
+    color: red;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+
+/*CSS per lista opere*/
+
+div.containerListaOpere{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: var(--BgSidebar);
+    margin:1em;
+}
+
+div.opera{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    justify-items: center;
+    padding: 1em;
+}
+
+div.overlay > p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+/* CSS per Galleria, pagina principale*/
+
+.containerGalleria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100vw; /* Occupa l'intera larghezza della finestra */
+    height: 100vh; /* Occupa l'intera altezza della finestra */
+}
+
+.gallerySection1, .gallerySection2,.gallerySection3,.gallerySection4,.gallerySection5{
+    flex: 1; /* Ogni contenitore occupa lo stesso spazio disponibile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5em;
+    position: relative;
+    border: 2px solid var(--txtColor);
+    overflow: hidden;
+}
+
+.gallerySection1::before,.gallerySection2::before,.gallerySection3::before,.gallerySection4::before,.gallerySection5::before{
+    content: ""; /* Contenuto generato per rendere ::before selezionabile */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Posiziona l'immagine di sfondo dietro il contenuto della colonna */
+    cursor: pointer;
+    transition: opacity 0.6s ease;
+    opacity: 0.3;
+}
+
+
+.gallerySection1::before{
+    background-image: url(../src/assets/galleria/pensieri_liquidi/09.jpg);
+}
+.gallerySection2::before{
+    background-image: url(../src/assets/galleria/un_astrazione_possibile/13.jpg);
+}
+.gallerySection3::before{
+    background-image: url(../src/assets/galleria/attraverso_il_colore/12.jpg);
+}
+.gallerySection4::before{
+    background-image: url(../src/assets/galleria/artefiera_cremona/06.JPG);
+}
+.gallerySection5::before{
+    background-image: url(../src/assets/galleria/resilienza/12.jpg);
+}
+
+.gallerySection1:hover::before,.gallerySection2:hover::before,.gallerySection3:hover::before,.gallerySection4:hover::before,.gallerySection5:hover::before{
+    opacity:1;
+}
+
+a.btnGalleria{
+    margin: 10%;
+    padding: 20%;
+    width: auto;
+    line-height: 1.5rem; /*evita la sovrapposizione del testo*/
+    background-color: var(--BgButton);
+    background-size: contain;
+    backdrop-filter: blur(1em); /*effetto blur su firefox ed edge*/
+    -webkit-backdrop-filter: blur(1rem); /*effetto blur su safari altrimenti non funziona*/
+    color: var(--linkColor);
+    font-size: 1.25em;
+    cursor: pointer;
+    border: none;
+    border-radius: 1em;
+    -webkit-appearance: button; /*per safari*/
+    -moz-appearance: button; /*per firefox e altri browser*/
+    appearance: button;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+a.btnGalleria:visited{
+    color:var(--linkColor)
+}
+
+a.btnGalleria:hover{
+    color: var(--visitedLinkColor);
+    opacity: 1;
+}
+
+
+/*CSS GALLERIA*/
+div.recesioni{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    background-color: var(--BgSidebar);
+}
+  
+div.articolo {
+    width:100%;
+    margin:auto;
+    padding-top: 2em;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+    background-color: var(--BgSidebar);
+    padding-bottom: 1em;
+
+}
+
+div.articolo >p{
+    text-align: center;
+    padding: 1em;
+}
+  
+blockquote {
+    color:var(--txtColor);
+    background-color: var(--blockquoteBGColor);
+    margin:1.5em;
+    padding-left:1em;
+    border-left:1px;
+    border-left-style:solid;
+    text-align: left;
+}
+  
+#galleria {
+    display:flex;
+    flex-direction: row;
+    /* align-content:space-between; */
+    align-items:flex-start;
+    /* max-width: 1600px; */
+}
+  
+/*
+div.album {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: var(--bgColor);
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+
+}
+  
+div.album img{
+    max-height: 260px;
+    margin:1%;
+    max-width: 100%;
+    padding: 10px;
+}
+*/
+
+div.album{/*slider*/
+    height: 250px;
+    margin:auto;
+    position:relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+div.album-track-artfiera_cremona, div.album-track-pensieri_liquidi{ /*slidetrack*/
+    display: flex;
+    width: calc(250px * 24); /*qui il secondo numero è il numero di immagini*/
+    animation: scroll 40s linear infinite;
+}
+div.album-track-attraverso_il_colore{
+    display: flex;
+    width: calc(250px * 40);
+    animation: scroll 60s linear infinite;
+}
+div.album-track-resilienza{
+    display: flex;
+    width: calc(250px * 32);
+    animation: scroll 50s linear infinite;
+}
+div.album-track-unastrpos{
+    display: flex;
+    width: calc(250px * 34);
+    animation: scroll 55s linear infinite;
+}
+
+div.album-track-artfiera_cremona:hover, div.album-track-attraverso_il_colore:hover, div.album-track-pensieri_liquidi:hover,div.album-track-resilienza:hover,div.album-track-unastrpos:hover{
+    animation-play-state: paused;
+}
+
+
+@keyframes scroll{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(calc(-250px * 12));
+    }
+}
+
+div.slideImmagini{ /*slide*/
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+
+div.slideImmagini > img{ /*img*/
+    width: 100%;
+    transition: transform 1s;
+}
+
+div.slideImmagini > img:hover{
+    transform: translateZ(20px);
+}
+
+div.album::before, div.album::after{
+    background:linear-gradient(to right, var(--BgSidebar) 0%, rgba(255,255,255,0) 100%);
+    content:'';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+div.album::before{
+    left:0;
+    top:0;
+}
+
+div.album::after{
+    right:0;
+    top:0;
+    transform: rotateZ(180deg);
+}
+
+/*CSS PER MODIFICA OPERA, e aggiungi opera*/
+form.modificaopere, form.newOpera, form.newCarta{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background-color: var(--headerBgColor);
+
+}
+
+form.modificaopere > fieldset, form.newOpera > fieldset, form.newCarta > fieldset{
+    margin: 1em;
+    padding: 1em;
+    font-size: 1em;
+}
+
+
+fieldset > span > input[type="text"]:focus{
+    background-color: var(--focusformcolor);
+}
+
+fieldset > span > input[type="number"]:focus{
+    background-color: var(--focusformcolor);
+}
+
+fieldset > span > input[readonly=""],fieldset > span > input[readonly=""]:hover,fieldset > span > input[readonly=""]:focus{
+    background-color: var(--formnotwrite);
+    color:var(--txtColor);
+}
+
+form.modificaopere > fieldset > label{
+    font-weight: bold;
+}
+
+fieldset > input[type="submit"],fieldset > input[type="reset"], div.prenotaBottoni > input{
+    background-color: var(--ButtonBgColor);
+    border: none;
+    color: var(--footerBgColor);
+    margin:0.5em;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.5em;
+}
+
+form.modificaopere > fieldset > input[type="submit"]:hover,form.modificaopere > fieldset > input[type="reset"]:hover, div.prenotaBottoni > input:hover{
+    opacity: 0.5;
+}
+
+textarea{
+    width: 100%;
+    height: 120px;
+}
+
+/*CSS per la dashboard*/
+
+div.raccogli_bottoni{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    background-color: var(--headerBgColor);
+}
+
+a.bottonedash{
+    background-color: var(--ButtonBgColor);
+    border: none;
+    color: var(--footerBgColor);
+    margin:0.5em;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.5em;
+}
+
+a.bottonedash:hover{
+    opacity: 0.5;
+}
+
+.prenotazioni{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+    background-color: var(--headerBgColor);
+    border: 10px solid var(--txtColor);
+}
+
+.prenotazione_messaggio{
+    display: flex;
+    background-color: var(--BgSidebar);
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 3px solid var(--txtColor);
+    width:100%;
+    overflow: auto;
+    white-space: nowrap;
+    justify-content: space-around;
+}
+
+.contattomsg{
+    display: flex;
+    background-color: var(--BgSidebar);
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 3px solid var(--txtColor);
+    width:100%;
+    overflow: auto;
+    white-space: nowrap;
+    justify-content: space-around;
+}
+
+
+/*Css procedura di prenotazione*/
+div.proceduraPrenotazione{
+    background-color: var(--headerBgColor);
+    border: 5px solid var(--txtColor);
+    align-items: center;
+}
+
+form.procPrenota{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding:3%;
+}
+
+form.procPrenota > fieldset{
+    border: none;
+}
+
+form.procPrenota > fieldset > textarea{
+    width: 100%;
+    height: 200px;
+}
+
+form.procPrenota > fieldset > textarea:focus{
+    background-color: var(--focusformcolor);
+}
+
+form.procPrenota > fieldset > textarea:focus{
+    background-color: var(--focusformcolor);
+}
+
+div.prenotaBottoni{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+textarea#message{
+    width: 100%;
+    height: 100px;
+}
+
+p.piccolo{
+    font-size: 1rem;
+}
+
+/* Ultime aggiunte per lo stile*/
+
+blockquote.homequote {
+    color:var(--txtColor);
+    background-color: var(--BgSidebar);
+    margin:1.5em;
+    padding-left:1em;
+    border-left:1px;
+    border-left-style:solid;
+    text-align: left;
+}

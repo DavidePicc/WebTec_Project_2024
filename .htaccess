@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /WecTec_Project_2024/src/errors/errore404.php [L,QSA]
+
+    ErrorDocument 404 /WecTec_Project_2024/src/errors/errore404.php
+</IfModule>

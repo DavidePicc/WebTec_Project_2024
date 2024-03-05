@@ -1,0 +1,98 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    font-size: 12pt;
+    font-family: "Times New Roman", serif;
+    line-height: 1em; /*per accessibilità possiamo mettere 1.5 ma per risparmiare carta meglio 1*/
+    margin:auto;
+}
+
+.container{
+    display: none;
+}
+
+header{
+    text-align: left;
+    padding: 1em 0 1em 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#first{
+    display: none;
+}
+
+header > a{
+    content: url(../src/assets/nome.png);
+    width: 8cm;
+    filter: invert(100%);
+    margin: auto;
+}
+
+.aiutoNavigazione{
+    display: none;
+}
+
+header ul{
+    display: none;
+}
+
+#breadcrump{
+    padding: 0.5em 0 0.5em 0;
+    margin-top: 0.5em;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    font-weight: bold;
+}
+
+#breadcrump p{
+    max-width: 1024px;
+    margin: auto
+}
+
+footer{
+    text-align: center;
+    font-size: 10pt;
+    font-style: italic;
+    padding: 1.3em 0.5em 0.5em;
+    border-top: 1px solid #DDD;
+}
+
+.accesso{
+    display: none;
+}
+
+div.album{
+    display: none;
+}
+
+main#contenuto{
+    text-rendering: optimizeLegibility;
+}
+
+.biografia > h2, .biografia > p, .esposizioni > h2, .esposizioni > p{
+    padding:5px;
+}
+
+img.img-bio{
+    margin:5px;
+    width: 155px;
+    height: 152px;
+}
+
+div.containerOperaSingola > div.left > a > img{
+    width: 60%;
+    height: 60%;
+}
+
+div.right > h2{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.tornasu{
+    display: none;
+}

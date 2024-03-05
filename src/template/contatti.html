@@ -1,0 +1,33 @@
+<div class="contatti">
+    <h3 class="titolo">Contatti</h3>
+    <p>bertocco.sandra@gmail.com</p>
+    <p>arte.vvinci@gmail.com</p>
+
+    <form id="contactForm" action="contatti.php" method="POST">
+        <div>
+            <label for="firstName">Nome:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <span id="firstNameError" class="error-message"></span>
+        </div>
+        <div>
+            <label for="lastName">Cognome:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <span id="lastNameError" class="error-message"></span>
+        </div>
+        <div>
+            <label for="phone">Telefono:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            <span id="phoneError" class="error-message"></span>
+        </div>
+        <div>
+            <label for="message">Messaggio:</label>
+            <p class = "piccolo">(Questo messaggio non è legato al tuo account puoi inviarlo anche senza aver eseguito l'accesso)</p>
+            <textarea id="message" name="message" maxlength="256" required></textarea>
+            <span id="messageError" class="error-message"></span>
+        </div>
+        <div>
+            <button type="submit">INVIA MESSAGGIO</button>
+        </div>
+    </form>
+    {messaggio}
+</div>

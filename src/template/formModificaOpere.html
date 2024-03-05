@@ -1,0 +1,49 @@
+<h1>Modifica opera '{titolo}'</h1>
+
+<form class="modificaopere" method="post" action="modificaOpere.php" enctype="multipart/form-data">
+	<fieldset>
+		<legend>Dati generali</legend>
+	
+		<label for="titolo">Titolo </label>
+		<span><input type="text" name="titolo" id="titolo"  value="{titolo}" {titoloPrimary}></span>
+
+		<label for="anno">Anno: </label> 
+		<span><input type="number" name="data" id="data" value="{anno}" required></span>
+
+		<label for="tecnica">Tecnica: </label> 
+		<span><input type="text" name="tecnica" id="tecnica" value="{tecnica}" required/></span>
+		
+		<label for="altezza">Altezza: </label> 
+		<span><input type="number" name="altezza" id="altezza" value="{altezza}" {requiredDim}></span>
+		<label for="larghezza">Larghezza: </label> 
+		<span><input type="number" name="larghezza" id="larghezza" value="{larghezza}" {requiredDim}></span>
+
+		<label for="proprietario">Proprietario: </label>
+		<span><input type="text" name="proprietario" id="proprietario" value="{proprietario}" {requiredProprietario}></span>
+
+        <input type='hidden' name='tipoOpera' value='{tipoHidden}'>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Descrizione</legend>
+	
+		<label for="descrizione">Descrizione opera: </label>
+		<span><textarea type="text" name="descrizione" id="descrizione" maxlength="256">{descrizione}</textarea></span>
+	</fieldset>
+
+	<fieldset>
+		<legend>Aggiungi immagine</legend>
+	
+		<label for="path">Nome file dell'opera(senza .jpg): </label>
+		<span><input type="text" name="percorso" id="path"  value="{path}" {pathPrimary}></span>
+	</fieldset>
+
+	<fieldset>
+		<input type="submit" id="submit" name="submit" class="" value="MODIFICA" >
+        <input type="submit" id="elimina" name="elimina" class="" value="ELIMINA" >		
+        <input type="reset" id="reset" class="" value="RESET" >
+	</fieldset>
+	
+	<div>{messaggio}</div>
+
+	</form>

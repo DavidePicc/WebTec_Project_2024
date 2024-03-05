@@ -1,0 +1,14 @@
+<h2>Procedura di prenotazione</h2> 
+<p>Scrivi un messaggio di offerta per l'opera {opera}</p>
+    <div class="proceduraPrenotazione">
+        <form class="procPrenota" action="../php/formPrenotazione.php?idOpera={opera}" method="POST">
+            <fieldset>
+                <textarea type="text" name="messaggio" placeholder="inserisci il messaggio per la prenotazione con dei dati di contatto (telefono o email)" value="inserisci il messaggio per la prenotazione con dei dati di contatto (telefono o email)" maxlength="256" required></textarea>
+                <div class="prenotaBottoni">
+                    <input type="submit" id="submit" name="submit" class="" value="INVIO" >
+                    <input type="reset" id="reset" class="" value="CANCELLA" >
+                </div>
+            </fieldset>
+            <div>{messaggio}</div>
+        </form>
+    </div>
